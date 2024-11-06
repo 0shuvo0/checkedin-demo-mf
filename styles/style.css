@@ -9,6 +9,7 @@ body {
   font-size: 16px;
   background-color: var(--Pastel-Mint);
   padding: 0 3em;
+  padding-bottom: 3em;
 }
 
 :root {
