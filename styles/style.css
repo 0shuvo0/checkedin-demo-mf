@@ -50,8 +50,13 @@ body {
   max-width: 1300px;
   margin: 0 auto;
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 350px 1fr;
   gap: 48px;
+}
+.content .col {
+  max-height: 100%;
+  height: fit-content;
 }
 
 .nav-btn {
