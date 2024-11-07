@@ -72,7 +72,8 @@ const pages = [
         title: 'Landing',
         heading: 'Landing page',
         content: 'This is the page the user sees when they first visit the site.',
-        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/landingpage/index.html'
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/landingpage/index.html',
+        hideTopBar: true
     },
     {
         title: 'Verification',
@@ -84,7 +85,7 @@ const pages = [
         title: 'Dashboard',
         heading: 'Dashboard page',
         content: 'This is the page page where users can view all the details.',
-        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/dashboard/index.html'
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/dashboard/index.html?hideAnnouncements=true'
     },
     {
         title: 'Add-ons',
@@ -103,6 +104,12 @@ const pages = [
         heading: 'Contact host',
         content: 'This is the page where users can contact the host or hotel.',
         url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/chat/index.html'
+    },
+    {
+        title: 'Announcements',
+        heading: 'On-page nnouncements',
+        content: 'Shows the latest announcements from the hotel or host.',
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/dashboard/index.html'
     }
 ]
 
@@ -137,15 +144,20 @@ const pageTitle = $('.info-title')
 const pageInfo = $('.info-text')
 
 const iframe = $('.demo-iframe')
-
+const topBar = $('.top-bar')
 function showDetails(pageIdx){
     activePageIdx = pageIdx
 
     pageTitle.textContent = pages[pageIdx].heading
     pageInfo.textContent = pages[pageIdx].content
 
-    iframe.src = pages[pageIdx].url + `?theme_id=${themeId}`
-    console.log(pages[pageIdx].url + `?theme_id=${themeId}`)
+    topBar.classList[pages[pageIdx].hideTopBar ? 'remove' : 'add']('visible')
+
+    // iframe.src = pages[pageIdx].url + `?theme_id=${themeId}`
+    const u = pages[pageIdx].url
+    const url = new URL(u)
+    url.searchParams.set('theme_id', themeId)
+    iframe.src = url.href
 }
 
 init()

@@ -119,6 +119,10 @@ body {
   width: 90%;
   height: 95.5%;
   border-radius: 20px;
+  overflow-y: auto;
+}
+.phone-wrapper .phone-content::-webkit-scrollbar {
+  display: none;
 }
 .phone-wrapper .phone-content .demo-iframe {
   width: 100%;
@@ -128,6 +132,14 @@ body {
 }
 .phone-wrapper .phone-content .demo-iframe::-webkit-scrollbar {
   display: none;
+}
+.phone-wrapper .phone-content .top-bar {
+  background-color: var(--Pastel-Mint);
+  height: 4.9%;
+  display: none;
+}
+.phone-wrapper .phone-content .top-bar.visible {
+  display: block;
 }
 
 @keyframes popIn {
