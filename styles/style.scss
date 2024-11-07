@@ -149,6 +149,11 @@ body{
                 display: block;
             }
         }
+        &:has(.top-bar.visible){
+            .demo-iframe{
+                height: calc(100% - 4.9%);
+            }
+        }
     }
 }
 

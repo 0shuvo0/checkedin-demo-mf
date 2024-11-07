@@ -107,7 +107,7 @@ const pages = [
     },
     {
         title: 'Announcements',
-        heading: 'On-page nnouncements',
+        heading: 'On-page announcements',
         content: 'Shows the latest announcements from the hotel or host.',
         url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/dashboard/index.html'
     }
