@@ -141,6 +141,9 @@ body {
 .phone-wrapper .phone-content .top-bar.visible {
   display: block;
 }
+.phone-wrapper .phone-content:has(.top-bar.visible) .demo-iframe {
+  height: 95.1%;
+}
 
 @keyframes popIn {
   from {
