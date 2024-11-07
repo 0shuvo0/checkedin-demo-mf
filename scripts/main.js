@@ -4,7 +4,56 @@ const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector
 let themeId = 2
 let activePageIdx = 0
 
+const iframe = $('.demo-iframe')
+const topBar = $('.top-bar')
+const pageTitle = $('.info-title')
+const pageInfo = $('.info-text')
 
+const pages = [
+    {
+        title: 'Landing',
+        heading: 'Landing page',
+        content: 'This is the page the user sees when they first visit the site.',
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/landingpage/index.html',
+        hideTopBar: true
+    },
+    {
+        title: 'Verification',
+        heading: 'Verification page',
+        content: 'This is the where the user is redirected to after they click on the ">" icon on the landing page.',
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/guest-verification/index.html'
+    },
+    {
+        title: 'Dashboard',
+        heading: 'Dashboard page',
+        content: 'This is the page page where users can view all the details.',
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/dashboard/index.html?hideAnnouncements=true'
+    },
+    {
+        title: 'Add-ons',
+        heading: 'Upgrade your stay',
+        content: 'This is the page where users can add more products, facilities or extras to thier stay.',
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/upgrades/index.html'
+    },
+    {
+        title: 'Nearby',
+        heading: 'Nearby places',
+        content: 'This is the page where users can view nearby places recommended by the hotel.',
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/guides/index.html'
+    },
+    {
+        title: 'Contact',
+        heading: 'Contact host',
+        content: 'This is the page where users can contact the host or hotel.',
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/chat/index.html'
+    },
+    {
+        title: 'Announcements',
+        heading: 'On-page announcements',
+        content: 'Shows the latest announcements from the hotel or host.',
+        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/dashboard/index.html'
+    }
+]
 
 
 const colorPickerBtn = document.getElementById("color-pdicker-btn")
@@ -59,6 +108,7 @@ if(theme){
             parent.prepend(theme)
 
             themeId = idx
+            showDetails(activePageIdx)
             
         }
     })
@@ -66,52 +116,6 @@ if(theme){
 
 
 
-
-const pages = [
-    {
-        title: 'Landing',
-        heading: 'Landing page',
-        content: 'This is the page the user sees when they first visit the site.',
-        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/landingpage/index.html',
-        hideTopBar: true
-    },
-    {
-        title: 'Verification',
-        heading: 'Verification page',
-        content: 'This is the where the user is redirected to after they click on the ">" icon on the landing page.',
-        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/guest-verification/index.html'
-    },
-    {
-        title: 'Dashboard',
-        heading: 'Dashboard page',
-        content: 'This is the page page where users can view all the details.',
-        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/dashboard/index.html?hideAnnouncements=true'
-    },
-    {
-        title: 'Add-ons',
-        heading: 'Upgrade your stay',
-        content: 'This is the page where users can add more products, facilities or extras to thier stay.',
-        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/upgrades/index.html'
-    },
-    {
-        title: 'Nearby',
-        heading: 'Nearby places',
-        content: 'This is the page where users can view nearby places recommended by the hotel.',
-        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/guides/index.html'
-    },
-    {
-        title: 'Contact',
-        heading: 'Contact host',
-        content: 'This is the page where users can contact the host or hotel.',
-        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/chat/index.html'
-    },
-    {
-        title: 'Announcements',
-        heading: 'On-page announcements',
-        content: 'Shows the latest announcements from the hotel or host.',
-        url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/dashboard/index.html'
-    }
-]
 
 const navBtnsContainer = $('.nav-btns-container')
 
@@ -140,11 +144,10 @@ function init(){
 
     })
 }
-const pageTitle = $('.info-title')
-const pageInfo = $('.info-text')
 
-const iframe = $('.demo-iframe')
-const topBar = $('.top-bar')
+
+
+
 function showDetails(pageIdx){
     activePageIdx = pageIdx
 
