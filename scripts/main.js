@@ -1,7 +1,7 @@
 const $ = (selector, parent = document) => parent.querySelector(selector)
 const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)]
 
-let themeId = 2
+let themeId = 0
 let activePageIdx = 0
 
 const iframe = $('.demo-iframe')
@@ -106,7 +106,7 @@ if(theme){
             const parent = theme.parentElement
             theme.remove()
             parent.prepend(theme)
-
+            console.log("theme found", idx);
             themeId = idx
             showDetails(activePageIdx)
             
@@ -160,6 +160,7 @@ function showDetails(pageIdx){
     const u = pages[pageIdx].url
     const url = new URL(u)
     url.searchParams.set('theme_id', themeId)
+    console.log(url.href, themeId)
     iframe.src = url.href
 }
 
