@@ -2,7 +2,13 @@ const $ = (selector, parent = document) => parent.querySelector(selector)
 const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)]
 
 let themeId = 0
+//get active page index from url query
 let activePageIdx = 0
+const urlParams = new URLSearchParams(window.location.search)
+const pageIdx = urlParams.get('page')
+if(pageIdx){
+    activePageIdx = parseInt(pageIdx)
+}
 
 const iframe = $('.demo-iframe')
 const topBar = $('.top-bar')
@@ -127,17 +133,18 @@ function init(){
         navBtn.href = page.url
         navBtn.textContent = page.title
         navBtn.classList.add('nav-btn')
-        if(index === 0){
+        if(index === activePageIdx){
             navBtn.classList.add('active')
-            showDetails(0)
+            showDetails(activePageIdx)
         }
         navBtnsContainer.appendChild(navBtn)
 
         navBtn.addEventListener('click', (e) => {
             e.preventDefault()
-            navBtns.forEach(btn => btn.classList.remove('active'))
-            navBtn.classList.add('active')
-            showDetails(index)
+            // navBtns.forEach(btn => btn.classList.remove('active'))
+            // navBtn.classList.add('active')
+            // showDetails(index)
+            window.location.href = `${window.location.origin}${window.location.pathname}?page=${index}`
         })
 
         navBtns.push(navBtn)
@@ -149,6 +156,9 @@ function init(){
 
 
 function showDetails(pageIdx){
+
+
+
     activePageIdx = pageIdx
 
     pageTitle.textContent = pages[pageIdx].heading
@@ -156,7 +166,6 @@ function showDetails(pageIdx){
 
     topBar.classList[pages[pageIdx].hideTopBar ? 'remove' : 'add']('visible')
 
-    // iframe.src = pages[pageIdx].url + `?theme_id=${themeId}`
     const u = pages[pageIdx].url
     const url = new URL(u)
     url.searchParams.set('theme_id', themeId)
