@@ -38,13 +38,13 @@ const pages = [
     {
         title: 'Add-ons',
         heading: 'Upgrade your stay',
-        content: 'This is the page where users can add more products, facilities or extras to thier stay.',
+        content: 'This is the page where users can add more products, facilities or extras to their stay.',
         url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/upgrades/index.html'
     },
     {
         title: 'Nearby',
         heading: 'Nearby places',
-        content: 'This is the page where users can view nearby places recommended by the hotel.',
+        content: 'This is the page where users can view nearby places recommended by the host.',
         url: 'https://thriving-gaufre-a6b8fe.netlify.app/pages/guides/index.html'
     },
     {
